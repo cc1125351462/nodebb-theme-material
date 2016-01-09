@@ -5,13 +5,8 @@
 
     <div class="post-block">
         <div class="poster-avatar hidden-xs">
-            <a href="{config.relative_path}/user/{posts.user.userslug}">
-                <!-- IF posts.user.picture -->
-                <img src="{posts.user.picture}" class="user-picture" title="{posts.user.username}"/>
-                <!-- ELSE -->
-                <div class="user-icon" style="background-color: {posts.user.icon:bgColor};">{posts.user.icon:text}</div>
-                <!-- ENDIF posts.user.picture -->
-                <span component="user/status" class="status {posts.user.status}" title="[[global:{posts.user.status}]]"></span>
+            <a href="#">
+                {posts.user.username}
             </a>
         </div>
 
@@ -24,30 +19,16 @@
                             <i class="fa fa-thumbs-o-up"></i>
                         </a>
                         <span component="post/vote-count" data-votes="{posts.votes}">{posts.votes}</span>
-                        <!-- IF !downvote:disabled -->
-                        <a component="post/downvote" href="#" class="<!-- IF posts.downvoted -->downvoted<!-- ENDIF posts.downvoted -->">
-                            <i class="fa fa-thumbs-o-down"></i>
-                        </a>
-                        <!-- ENDIF !downvote:disabled -->
+                     
                         <!-- ENDIF !reputation:disabled -->
                     </li>
-                    <!-- IMPORT partials/topic/post-menu.tpl -->
+                   
                 </div>
 
                 <div class="post-header">
-                    <a class="pull-left visible-xs" href="{config.relative_path}/user/{posts.user.userslug}">
-                        <!-- IF posts.user.picture -->
-                        <img src="{posts.user.picture}" class="post-user-picture" title="{posts.user.username}"/>
-                        <!-- ELSE -->
-                        <div class="user-icon post-user-picture" style="background-color: {posts.user.icon:bgColor};">{posts.user.icon:text}</div>
-                        <!-- ENDIF posts.user.picture -->
-                    </a>
-
-                    <strong>
-                        <a href="<!-- IF posts.user.userslug -->{config.relative_path}/user/{posts.user.userslug}<!-- ELSE -->#<!-- ENDIF posts.user.userslug -->" itemprop="author" data-username="{posts.user.username}" data-uid="{posts.user.uid}">{posts.user.username}</a>
-                    </strong>
-                    <!-- IMPORT partials/topic/badge.tpl -->
+                    
                     <span class="post-time">
+					{posts.user.username}
                         [[global:posted_ago, <a class="permalink" href="{config.relative_path}/topic/{slug}/{function.getBookmarkFromIndex}"><span class="timeago" title="{posts.relativeTime}"></span></a>]]
 
                         <span class="post-tools">

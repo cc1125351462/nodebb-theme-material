@@ -61,10 +61,18 @@
 		}
 
 		.forum-logo {
-			width: 95px;
-			height: 28px;
-			float: left;
+			height: 63px;
+			margin: -15px 0 0 15px;
+			width: auto;
 		}
+		.forum-logo {
+			@media (max-width: @screen-phone) {
+				height: 50px;
+				margin: -6px 0 0 15px;
+				width: auto;
+			}
+		}
+		
 	}
 
 	.logo.menu-in-header {

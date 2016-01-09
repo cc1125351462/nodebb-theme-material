@@ -6,17 +6,11 @@
     </div>
 <header id="header" component="navbar">
     <ul class="header-inner">
-        <li id="menu-trigger" data-trigger="#sidebar" <!-- IF config.menuInHeader -->class="menu-header"<!-- ENDIF config.menuInHeader -->>
-            <div class="line-wrap">
-                <div class="line top"></div>
-                <div class="line center"></div>
-                <div class="line bottom"></div>
-            </div>
-        </li>
+        
     	<li class="logo <!-- IF config.menuInHeader -->menu-in-header<!-- ENDIF config.menuInHeader -->">
 			<!-- IF brand:logo -->
-            <a href="<!-- IF brand:logo:url -->{brand:logo:url}<!-- ELSE -->{relative_path}/<!-- ENDIF brand:logo:url -->">
-                <img alt="{brand:logo:alt}" class="{brand:logo:display} forum-logo" src="{brand:logo}" />
+            <a href="#">
+                <img alt="{brand:logo:alt}" class="{brand:logo:display} forum-logo click_back" src="{brand:logo}" />
             </a>
             <!-- ENDIF brand:logo -->
 
@@ -68,7 +62,11 @@
                     </ul>
                 </div>
             </li>
-
+			<li >
+               <a href="#" class='click_back' style="float:right;text-align: right;color: #fff;width: 92px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;cursor: pointer;">
+					返回主页
+				</a>
+            </li>
             <li>
                 <a href="#" id="reconnect" class="hide" title="Connection to {title} has been lost, attempting to reconnect...">
                     <i class="fa fa-check"></i>
@@ -91,85 +89,16 @@
             <!-- ENDIF config.searchEnabled -->
 			
 			<!-- IF config.loggedIn -->
-            <li class="notifications dropdown" component="notifications">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="notif_dropdown">
-                    <i class="fa fa-fw fa-bell-o" component="notifications/icon" data-content="0"></i>
-                </a>
-                <div class="dropdown-menu dropdown-menu-lg pull-right">
-                    <div class="listview">
-                        <div class="lv-header">
-                            [[notifications:title]]
-                        </div>
-                        <div class="lv-body c-overflow" id="notif-list" component="notifications/list">
-                            <a href="#" class="lv-item"><i class="fa fa-refresh fa-spin"></i> [[global:notifications.loading]]</a>
-                        </div>
-                        <div class="lv-footer">
-                        <a href="#" class="mark-all-read">[[notifications:mark_all_read]]</a>
-                        <hr />
-                        <a href="{relative_path}/notifications">[[notifications:see_all]]</a>
-                        </div>
-                    </div>
-                </div>
-            </li>
-
-            <!-- IF !config.disableChat -->
-            <li class="chats dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="chat_dropdown" component="chat/dropdown">
-                    <i component="chat/icon" class="fa fa-comment-o fa-fw"></i>
-                </a>
-                <div class="dropdown-menu dropdown-menu-md pull-right" aria-labelledby="chat_dropdown">
-                    <div class="listview">
-                        <div class="lv-body c-overflow chat-list" component="chat/list">
-                            <a href="#"><i class="fa fa-refresh fa-spin"></i> [[global:chats.loading]]</a> 
-                        </div>
-                        <div class="lv-footer">
-                            <a href="{relative_path}/chats">[[modules:chat.see_all]]</a>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <!-- ENDIF !config.disableChat -->
-
+           
             <li id="user_label" class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="user_dropdown">
                     <!-- IF user.picture -->
                     <img component="header/userpicture" src="{user.picture}" alt="{user.username}" class="user-picture" id="user-header-picture" />
                     <!-- ELSE -->
-                    <div component="header/usericon" class="user-icon" style="background-color: {user.icon:bgColor};">{user.icon:text}</div>
+                   {user.username}
                     <!-- ENDIF user.picture -->
                 </a>
-                <ul id="user-control-list" component="header/usercontrol" class="dropdown-menu pull-right" aria-labelledby="user_dropdown">
-                    <li>
-                        <a component="header/profilelink" id="user-profile-link" href="{relative_path}/user/{user.userslug}">
-                            <i component="user/status" class="status {user.status}"></i> <span component="header/username" id="user-header-name">{user.username}</span>
-                        </a>
-                    </li>
-                    <li role="presentation" class="divider"></li>
-                    <li>
-                        <a href="#" class="user-status" data-status="online">
-                            <i class="status online"></i><span> [[global:online]]</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="user-status" data-status="away">
-                            <i class="status away"></i><span> [[global:away]]</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="user-status" data-status="dnd">
-                            <i class="status dnd"></i><span> [[global:dnd]]</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="user-status" data-status="offline">
-                            <i class="status offline"></i><span> [[global:invisible]]</span>
-                        </a>
-                    </li>
-                    <li role="presentation" class="divider"></li>
-                    <li component="user/logout">
-                        <a href="#"><i class="fa fa-fw fa-sign-out"></i><span> [[global:logout]]</span></a>
-                    </li>
-                </ul>
+              
             </li>
             <!-- ELSE -->
             <!-- IF allowRegistration -->

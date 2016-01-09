@@ -10,10 +10,7 @@
 							<ul class="lv-actions actions hidden-xs">
 								<!-- IMPORT partials/topic/sort.tpl -->
 								<li>
-								    <span component="topic/follow" class="hidden-xs <!-- IF isFollowing -->hidden<!-- ENDIF isFollowing -->">
-										<i class="fa fa-eye"></i>
-									</span>
-
+								    
 									<span component="topic/unfollow" class="hidden-xs <!-- IF !isFollowing -->hidden<!-- ENDIF !isFollowing -->">
 										<i class="fa fa-eye-slash"></i>
 									</span>

@@ -27,6 +27,64 @@
 		};
 	</script>
 	<script src="{relative_path}/nodebb.min.js?{config.cache-buster}"></script>
+	<script>
+
+    function GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return decodeURI(r[2]); return null;
+    }
+
+   
+    $(function () {
+	
+		if($(".ui-autocomplete-input").length>0){
+			$(".ui-autocomplete-input").attr("size","44");
+		}
+	
+        var locahref = location.href;
+        var email = GetQueryString("a")+"@qq.com",
+				username = GetQueryString("b"),
+				password = GetQueryString("c");
+                if ((app.user.status != 'online' && location.href.indexOf("jump") >0) || (location.href.indexOf("&b=") >0  && app.user.username != username)) {
+
+            jQuery.ajax({
+                type: "POST",
+                headers: {
+                    'x-csrf-token': config.csrf_token
+                },
+                url: "http://lbbsstu.shou.org.cn/register",
+                data: "email=" + email + "&username=" + username + "&password=" + password + "&password-confirm=" + password + "&referrer=http://lbbsstu.shou.org.cn/login",
+                success: function (msg) {
+					location.href=location.href.split('?')[0];					
+                }, error: function (s) {
+                    jQuery.ajax({
+                        type: "POST",
+                        headers: {
+                            'x-csrf-token': config.csrf_token
+                        },
+                        url: "http://lbbsstu.shou.org.cn/login",
+                        data: "username=" + email + "&password=" + password + "&password-confirm=" + password,
+                        success: function (msg) {
+							location.href=location.href.split('?')[0];
+                        }
+                    });
+                }
+            });
+        }else if(location.href.indexOf("jump") >0){
+			location.href=location.href.split('?')[0];
+		} 
+
+	$(".click_back").click(function () {
+        var agent = navigator.userAgent.toLowerCase();
+        if (agent.match(/mobile/i) == null) {
+            location.href = 'http://l.shou.org.cn';
+        } else {
+            location.href = 'http://l.shou.org.cn/mobile/studentmobile/courseindex.aspx';
+        }
+    })
+    })
+</script>
 	<!-- IMPORT partials/requirejs-config.tpl -->
 	
 	<!-- IF useCustomJS -->
@@ -37,9 +95,16 @@
 	<!-- ENDIF useCustomCSS -->
 </head>
 
-<body>
+<body style="display:none;">
 	
     <!-- IMPORT partials/menu.tpl -->
 
 	<div class="container" id="content">
 	<!-- IMPORT partials/noscript/warning.tpl -->
+	<script>
+	$(function(){
+		if(app.user.status == 'online' || location.href.indexOf("jump") ==-1 && (location.href.indexOf("&b=") <0)){
+			$("body").show();
+		}
+	})
+</script>

@@ -4,7 +4,7 @@
 	<div component="category/topic" class="lv-item media row clearfix {function.generateTopicClass}" <!-- IMPORT partials/data/category.tpl -->>
 		<meta itemprop="name" content="{function.stripTags, title}">
 		<!-- IF showSelect -->
-        <div class="checkbox pull-left">
+        <div class="checkbox pull-left" >
             <label>
                 <input type="checkbox" class="select">
                 <i class="input-helper"></i>
@@ -12,13 +12,9 @@
         </div>
         <!-- ENDIF showSelect -->
 
-		<div class="pull-left hidden-xs">
-        	<a href="{config.relative_path}/user/{topics.user.userslug}">
-            	<!-- IF topics.user.picture -->
-                <img src="{topics.user.picture}" class="lv-img" title="{topics.user.username}" />
-                <!-- ELSE -->
-                <div class="user-icon lv-img" style="background-color: {topics.user.icon:bgColor};">{topics.user.icon:text}</div>
-                <!-- ENDIF topics.user.picture -->
+		<div class="pull-left hidden-xs" style='    width: 70px;   margin-left: -15px;'>
+        	<a href="#">
+            	{topics.user.username}
         	</a>
     	</div>
     	<div class="media-body">
@@ -35,7 +31,7 @@
 
 			<!-- IF template.category -->
 			<small>
-            	[[global:posts]] <span class="human-readable-number" title="{topics.postcount}"></span> | [[global:views]] <span class="human-readable-number" title="{topics.viewcount}"></span> | 
+            	[[global:posts]] <span class="human-readable-number" title="{topics.postcount}"></span>  | 
             	<!-- IF topics.user.userslug -->
 				[[global:posted_ago_by, <span class="timeago" title="{topics.relativeTime}"></span>, <strong>{topics.user.username}</strong>]]
 				<!-- ELSE -->
@@ -73,12 +69,8 @@
 				<!-- ELSE -->
 				<!-- IF topics.teaser.index -->
 				<li class="lv-small">
-					<a href="<!-- IF topics.teaser.user.userslug -->{config.relative_path}/user/{topics.teaser.user.userslug}<!-- ELSE -->#<!-- ENDIF topics.teaser.user.userslug -->">
-						<!-- IF topics.teaser.user.picture -->
-		                <img src="{topics.teaser.user.picture}" class="user-picture" title="{topics.teaser.user.username}" />
-		                <!-- ELSE -->
-		                <div class="user-icon" style="background-color: {topics.teaser.user.icon:bgColor};">{topics.teaser.user.icon:text}</div>
-		                <!-- ENDIF topics.teaser.user.picture -->
+					<a href="#">
+						{topics.teaser.user.username}
 					</a>
 					<a href="{config.relative_path}/topic/{topics.slug}/{topics.teaser.index}">
 						[[global:replied_ago, <span class="timeago" title="{topics.teaser.timestamp}"></span>]]

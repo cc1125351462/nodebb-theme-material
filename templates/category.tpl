@@ -15,7 +15,6 @@
 						<!-- ENDIF !loggedIn -->
 					<!-- ENDIF privileges.topics:create -->
 					<ul class="lv-actions actions">
-						<!-- IMPORT partials/category/watch.tpl -->
 						<!-- IMPORT partials/category/tools.tpl -->
 						<!-- IMPORT partials/category/sort.tpl -->
 					</ul>
